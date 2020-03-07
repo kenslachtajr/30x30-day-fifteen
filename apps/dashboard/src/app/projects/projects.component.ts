@@ -11,24 +11,24 @@ import { Observable } from 'rxjs';
 })
 export class ProjectsComponent implements OnInit {
   form: FormGroup;
-  selectedProject$: Project;
+  selectedProject: Project;
   projects$: Observable<Project[]> = this.projectsFacade.allProjects$;
 
   constructor(
     private projectsFacade: ProjectsFacade,
     private formBuilder: FormBuilder,
     private notify: NotifyService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.form.reset();
+    this.initForm();
     this.projectsFacade.loadProjects();
     this.projectsFacade.mutations$.subscribe(() => this.resetProject());
   }
 
   resetProject() {
     this.form.reset();
-    this.selectedProject$(emptyProject);
+    this.selectProject(emptyProject);
     Object.keys(this.form.controls).forEach(key => {
       this.form.get(key).setErrors(null);
     });
@@ -49,7 +49,7 @@ export class ProjectsComponent implements OnInit {
     this.projectsFacade.updateProject(this.form.value);
   }
 
-  saveProject(project:Project) {
+  saveProject(project: Project) {
     if (project.id) {
       this.updateProject();
     } else {
@@ -68,8 +68,6 @@ export class ProjectsComponent implements OnInit {
       title: ['', Validators.compose([Validators.required])],
       details: ['', Validators.compose([Validators.required])],
       importanceLevel: null
-
-    })
+    });
   }
-
 }
