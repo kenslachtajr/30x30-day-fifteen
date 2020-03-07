@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="col-50">
+    <projects-projects-list
+      [projects]="project$ | async"
+      (selected)="selectProject($event)"
+      (deleted)="deleteProject($event)"
+    >
+    </projects-projects-list>
+  </div>
+
+  <div class="col-50">
+    <projects-projects-details
+      [form]="form"
+      [project]="selectedProject"
+      (saved)="saveProject()"
+      (cancelled)="cancel()"
+    >
+    </projects-projects-details>
+  </div>
+</div>
