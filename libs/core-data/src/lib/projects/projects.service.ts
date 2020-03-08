@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Project } from './project.model';
 
 const BASE_URL = 'https://kenneth-server.herokuapp.com/';
 
@@ -19,8 +20,8 @@ export class ProjectsService {
     return this.httpClient.get(this.getUrl())
   }
 
-  findOne(projectId) {
-    return this.httpClient.get(this.getUrlForId(projectId));
+  findOne(project: Project) {
+    return this.httpClient.get(this.getUrlForId(project));
   }
 
   create(project) {
@@ -31,11 +32,11 @@ export class ProjectsService {
     return `${this.getUrl()}/${id}`;
   }
 
-  update(project) {
+  update(project: Project) {
     return this.httpClient.patch(this.getUrlForId(project.id), project);
   }
 
-  delete(projectId) {
-    return this.httpClient.delete(this.getUrlForId(projectId));
+  delete(project: Project) {
+    return this.httpClient.delete(this.getUrlForId(project.id));
   }
 }

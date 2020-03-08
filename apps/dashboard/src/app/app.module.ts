@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CoreDataModule } from '@ngrx-projects/core-data';
+import { CoreStateModule } from '@ngrx-projects/core-state';
 import { MaterialModule } from '@ngrx-projects/material';
 import { UiLoginModule } from '@ngrx-projects/ui-login';
 
@@ -30,6 +31,7 @@ import { WildComponent } from './wild/wild.component';
     FormsModule,
     ReactiveFormsModule,
     CoreDataModule,
+    CoreStateModule,
     MaterialModule,
     UiLoginModule,
     RoutingModule

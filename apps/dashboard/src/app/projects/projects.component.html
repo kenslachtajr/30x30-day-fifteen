@@ -1,20 +1,20 @@
 <div class="container">
   <div class="col-50">
-    <projects-projects-list
-      [projects]="project$ | async"
+    <ngrx-projects-projects-list
+      [projects]="projects$ | async"
       (selected)="selectProject($event)"
       (deleted)="deleteProject($event)"
     >
-    </projects-projects-list>
+    </ngrx-projects-projects-list>
   </div>
 
   <div class="col-50">
-    <projects-projects-details
+    <ngrx-projects-projects-details
       [form]="form"
       [project]="selectedProject"
-      (saved)="saveProject()"
-      (cancelled)="cancel()"
+      (saved)="saveProject($event)"
+      (cancelled)="resetProject()"
     >
-    </projects-projects-details>
+    </ngrx-projects-projects-details>
   </div>
 </div>
