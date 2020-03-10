@@ -36,6 +36,7 @@ export class ProjectsComponent implements OnInit {
 
   selectProject(project: Project) {
     this.projectsFacade.selectProject(project.id);
+    this.selectedProject = project;
     this.form.patchValue(project);
   }
 

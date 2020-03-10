@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import * as projectsActions from './projects.actions';
 import { ProjectsFacade } from './projects.facade';
@@ -79,7 +79,7 @@ export class ProjectsEffect {
           map((project: Project) =>
             projectsActions.projectCreated({ project })
           ),
-          tap(() => this.projectsFacade.loadProjects())
+          // tap(() => this.projectsFacade.loadProjects())
         );
       },
       onError: (
@@ -101,7 +101,7 @@ export class ProjectsEffect {
           map((project: Project) =>
             projectsActions.projectUpdated({ project })
           ),
-          tap(() => this.projectsService.all())
+          // tap(() => this.projectsService.all())
         );
       },
       onError: (
